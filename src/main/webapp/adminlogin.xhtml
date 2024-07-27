@@ -1,0 +1,96 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html">
+<head>
+    <title>Car Showroom Management System</title>
+    <style type="text/css">
+        body {
+            font-family: 'Arial', sans-serif;
+            background-image: url('https://t4.ftcdn.net/jpg/03/57/34/39/360_F_357343965_u58BFcRrziBVMqgt6liwPHJKcIjHsPnc.jpg');
+            background-size: cover;
+            background-attachment: fixed;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+        }
+
+        .container {
+            background: #ffffff;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .login-form {
+            max-width: 400px;
+            margin: auto;
+        }
+
+        .login-form h2 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 1.5rem;
+        }
+
+        .input-group {
+            margin-bottom: 1rem;
+        }
+
+        .input-group label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 0.5rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            transition: border-color 0.3s;
+        }
+
+        .input-group input:focus {
+            border-color: #2980b9;
+            outline: none;
+        }
+
+        .submit-button {
+            width: 100%;
+            padding: 0.75rem;
+            background-color: #2980b9;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .submit-button:hover {
+            background-color: #6dd5fa;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h:form id="loginForm" class="login-form">
+            <h2>Admin</h2>
+            <div class="input-group">
+                <h:outputLabel for="username" value="Username" />
+                <h:inputText id="username" value="#{adminbean.username}" required="true" />
+            </div>
+            <div class="input-group">
+                <h:outputLabel for="password" value="Password" />
+                <h:inputSecret id="password" value="#{adminbean.password}" required="true" />
+            </div>
+            <h:commandButton value="Submit" action="#{adminbean.validateadminlogin()}" styleClass="submit-button"/>
+        </h:form>
+    </div>
+    <script type="text/javascript" src="script.js"></script>
+</body>
+</html>

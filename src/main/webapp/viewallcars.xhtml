@@ -1,0 +1,128 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html">
+
+<h:head>
+    <title style="color:white">View All Cars</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa; /* Light gray background */
+            background-image: url('https://wallpapers.com/images/hd/plain-background-7h91softhxck36gv.jpg');
+            background-size: cover; /* Ensures the background covers the whole page */
+            background-position: center; /* Centers the background image */
+        }
+        .container {
+            max-width: 100%;
+            margin: 20px auto;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            max-height: 1000px;
+        }
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Smaller grid items */
+            gap: 15px; /* Adjust gap between items */
+            margin-top: 20px;
+        }
+        .grid-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: rgba(255, 255, 255, 0.9); /* Slightly transparent white */
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 10px; /* Smaller padding */
+            box-shadow: 0 0 8px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        .grid-item img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 4px;
+            margin-bottom: 8px; /* Smaller margin */
+        }
+        .grid-item h4 {
+            margin: 8px 0; /* Smaller margin */
+            color: #333; /* Dark text */
+        }
+        .grid-item p {
+            margin: 4px 0; /* Smaller margin */
+            color: #666; /* Gray text */
+        }
+        .action-links {
+            display: flex;
+            justify-content: space-around;
+            width: 100%;
+        }
+        .btn {
+            display: inline-block;
+            padding: 5px 10px; /* Smaller padding */
+            margin: 3px; /* Smaller margin */
+            font-size: 12px; /* Smaller font size */
+            font-weight: normal;
+            line-height: 1.42857143;
+            text-align: center;
+            white-space: nowrap;
+            vertical-align: middle;
+            cursor: pointer;
+            border: 1px solid transparent;
+            border-radius: 4px;
+        }
+        .btn-primary {
+            color: #fff;
+            background-color: #28a745; /* Dark green */
+            border-color: #28a745; /* Dark green */
+        }
+        .btn-primary:hover {
+            color: #fff;
+            background-color: #218838; /* Darker green on hover */
+            border-color: #1e7e34; /* Darker green on hover */
+        }
+        .btn-danger {
+            color: #fff;
+            background-color: #dc3545; /* Red */
+            border-color: #dc3545; /* Red */
+        }
+        .btn-danger:hover {
+            color: #fff;
+            background-color: #c82333; /* Darker red on hover */
+            border-color: #bd2130; /* Darker red on hover */
+        }
+    </style>
+</h:head>
+<body>
+    <div class="container">
+        <h3 style="text-align: center; color:white"><u>View All Cars</u></h3>
+        <p style="text-align: center;color:white">Total Cars: #{carBean.carList.size()}</p>
+        
+        <div class="grid-container">
+            <ui:repeat value="#{carBean.carList}" var="car">
+                <div class="grid-item">
+                    <h:graphicImage value="#{carBean.getImageBase64(car)}" styleClass="car-image" />
+                    <div class="car-info">
+                        <h4>ID: #{car.id}</h4>
+                        <p>Name: #{car.name}</p>
+                        <p>Model: #{car.model}</p>
+                        <p>Year: #{car.year}</p>
+                        <p>Description: #{car.description}</p>
+                        <p>Price: #{car.price}</p>
+                    </div>
+                    <div class="action-links">
+                        <h:form>
+                            <h:commandButton value="Download" action="#{carBean.downloadImage(car.id)}" styleClass="btn btn-primary" />
+                            <h:commandButton value="Delete" action="#{carBean.delete(car.id)}" styleClass="btn btn-danger" />
+                        </h:form>
+                    </div>
+                </div>
+            </ui:repeat>
+        </div>
+    </div>
+</body>
+</html>

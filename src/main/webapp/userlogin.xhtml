@@ -1,0 +1,125 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html">
+<head>
+    <title>User Registration</title>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url('https://i.pinimg.com/originals/13/5d/cf/135dcf0764e454da522b8880ad158f05.jpg');
+            background-size: cover;
+            background-attachment: fixed;
+            background-position: center;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.6); /* Slightly lighter dark overlay for better readability */
+        }
+
+        .login-form {
+            background: rgba(255, 255, 255, 0.8); /* Semi-transparent white for readability */
+            padding: 20px;
+            border-radius: 10px;
+            max-width: 400px;
+            width: 100%;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Optional shadow for better visibility */
+        }
+
+        .login-form h2 {
+            color: #2980b9;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .input-group {
+            margin-bottom: 15px;
+        }
+
+        .input-group h:outputLabel {
+            display: block;
+            margin-bottom: 5px;
+            color: #333;
+        }
+
+        .input-group h:inputText,
+        .input-group h:inputSecret {
+            width: 100%;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            font-size: 16px;
+            background-color: #fff; /* Ensure form elements have a white background for readability */
+        }
+
+        .submit-button {
+            background-color: #2980b9;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        .submit-button:hover {
+            background-color: #1c5980;
+        }
+
+        .link-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .link-container h:outputLink {
+            color: #2980b9;
+            text-decoration: none;
+        }
+
+        .link-container h:outputLink:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h:form id="registrationForm" class="login-form">
+            <h2>Register</h2>
+            <div class="input-group">
+                <h:outputLabel for="username" value="Username" />
+                <h:inputText id="username" value="#{userbean.username}" required="true" />
+            </div>
+            <div class="input-group">
+                <h:outputLabel for="email" value="Email" />
+                <h:inputText id="email" value="#{userbean.email}" required="true" />
+            </div>
+            <div class="input-group">
+                <h:outputLabel for="phoneno" value="Phone No" />
+                <h:inputText id="phoneno" value="#{userbean.phnno}" required="true" />
+            </div>
+            <div class="input-group">
+                <h:outputLabel for="password" value="Password" />
+                <h:inputSecret id="password" value="#{userbean.password}" required="true" />
+            </div>
+            <div class="input-group">
+                <h:outputLabel for="reenterPassword" value="Re-enter Password" />
+                <h:inputSecret id="reenterPassword" value="#{userbean.repassword}" required="true" />
+            </div>
+            <h:commandButton value="Submit" action="#{userbean.userregistration()}" styleClass="submit-button" />
+            <div class="link-container">
+                <h:outputLink value="customerlogin.jsf">Already have an account? Login here</h:outputLink>
+            </div>
+        </h:form>
+    </div>
+    <script type="text/javascript" src="script.js"></script>
+</body>
+</html>

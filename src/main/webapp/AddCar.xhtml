@@ -1,0 +1,203 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<head>
+    <title>Admin Dashboard</title>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"/>
+    <style>
+        body {
+            background-color: #f0f2f5;
+            font-family: 'Arial', sans-serif;
+        }
+        .sidebar {
+            background-color: #343a40;
+            position: fixed;
+            height: 100%;
+            width: 240px;
+            transition: all 0.3s;
+        }
+        .sidebar .nav-link {
+            color: #adb5bd;
+            margin: 15px 0;
+            transition: color 0.2s;
+        }
+        .sidebar .nav-link:hover {
+            color: #ffffff;
+        }
+        .sidebar .nav-link .fas {
+            margin-right: 10px;
+        }
+        .sidebar .dropdown-toggle::after {
+            display: none;
+        }
+        .content {
+            margin-left: 260px;
+            padding: 30px;
+        }
+        .card {
+            margin-bottom: 30px;
+            border-radius: 10px;
+        }
+        .card-header {
+            background-color: #007bff;
+            color: white;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+        }
+        .card-body {
+            background-color: #ffffff;
+            border-bottom-left-radius: 10px;
+            border-bottom-right-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .btn-primary {
+            background-color: #007bff;
+            border: none;
+            transition: background-color 0.2s;
+        }
+        .btn-primary:hover {
+            background-color: #0056b3;
+        }
+        .dropdown-menu {
+            background-color: #343a40;
+            border-radius: 0.5rem;
+        }
+        .dropdown-menu .dropdown-item {
+            color: #adb5bd;
+            transition: color 0.2s, background-color 0.2s;
+        }
+        .dropdown-menu .dropdown-item:hover {
+            color: #ffffff;
+            background-color: #007bff;
+        }
+        .navbar-custom {
+            background-color: #007bff;
+            padding: 1rem;
+        }
+        .navbar-custom .navbar-brand, .navbar-custom .navbar-nav .nav-link {
+            color: white;
+        }
+    </style>
+</head>
+<body>
+<div class="d-flex">
+    <div class="sidebar">
+        <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
+            <a href="/" class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+            </a>
+            <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
+                <li class="nav-item">
+                    <a href="adminhome.jsp" class="nav-link align-middle px-0">
+                        <i class="fas fa-home"></i> <span class="ms-1 d-none d-sm-inline">Home</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#submenu1" data-toggle="collapse" class="nav-link px-0 align-middle">
+                        <i class="fas fa-tachometer-alt"></i> <span class="ms-1 d-none d-sm-inline"></span>
+                    </a>
+                    <ul class="collapse show nav flex-column ms-1" id="submenu1" data-parent="#menu">
+                        <!-- Removed Item 1 and Item 2 -->
+                    </ul>
+                </li>
+                <li>
+                    <a href="addevent.jsf" class="nav-link px-0 align-middle">
+                        <i class="fas fa-table"></i> <span class="ms-1 d-none d-sm-inline"></span></a>
+                </li>
+                <li>
+                <a href="#submenu2" data-toggle="collapse" class="nav-link px-0 align-middle">
+                        <i class="fas fa-layer-group"></i> <span class="ms-1 d-none d-sm-inline"></span>
+                    </a>
+                    <ul class="collapse nav flex-column ms-1" id="submenu2" data-parent="#menu">
+                        <li class="w-100">
+                            <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline"></span></a>
+                        </li>
+                        <li>
+                            <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline"></span></a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#submenu4" data-toggle="collapse" class="nav-link px-0 align-middle">
+                        <i class="fas fa-users"></i> <span class="ms-1 d-none d-sm-inline"></span>
+                    </a>
+                    <ul class="collapse nav flex-column ms-1" id="submenu4" data-parent="#menu">
+                        <li class="w-100">
+                            <a href="viewallcars.jsf" class="nav-link px-0"> <span class="d-none d-sm-inline">ViewCars</span></a>
+                        </li>
+                        <li>
+                            <a href="viewallemps.jsf" class="nav-link px-0"> <span class="d-none d-sm-inline"></span></a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#" class="nav-link px-0 align-middle">
+                        <i class="fas fa-users"></i> <span class="ms-1 d-none d-sm-inline"></span> </a>
+                </li>
+            </ul>
+            <hr class="dropdown-divider" />
+            <div class="dropdown pb-4">
+                <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-toggle="dropdown" aria-expanded="false">
+                    <img src="https://github.com/mdo.png" alt="hugenerd" width="30" height="30" class="rounded-circle"></img>
+                    <span class="d-none d-sm-inline mx-1"></span>
+                </a>
+                <div class="dropdown-menu dropdown-menu-dark text-small shadow">
+                    <a class="dropdown-item" href="#">New project...</a>
+                    <a class="dropdown-item" href="#">Settings</a>
+                    <a class="dropdown-item" href="#">Profile</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#">Sign out</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="content">
+    <div class="d-flex justify-content-center align-items-center" style="height: 100%;">
+        <div class="card">
+            <div class="card-header">
+                Car Details
+            </div>
+            <div class="card-body">
+                <h:form enctype="multipart/form-data">
+                    <div class="form-group">
+                        <label for="carName">Car Name</label>
+                        <h:inputText id="carName" class="form-control" placeholder="Enter car name" value="#{carBean.name}" />
+                    </div>
+                    <div class="form-group">
+                        <label for="carModel">Car Model</label>
+                        <h:inputText id="carModel" class="form-control" placeholder="Enter car model" value="#{carBean.model}" />
+                    </div>
+                    <div class="form-group">
+                        <label for="carDescription">Car Description</label>
+                        <h:inputTextarea id="carDescription" class="form-control" rows="3" placeholder="Enter car description" value="#{carBean.description}" />
+                    </div>
+                    <div class="form-group">
+                        <label for="carPrice">Car Price</label>
+                        <h:inputText id="carPrice" type="number" class="form-control" placeholder="Enter car price" value="#{carBean.price}" />
+                    </div>
+                    <div class="form-group">
+                        <label for="carYear">Car Year</label>
+                        <h:inputText id="carYear" type="number" class="form-control" placeholder="Enter car year" value="#{carBean.year}" />
+                    </div>
+                    <div class="form-group">
+                        <label for="carImage">Upload Image</label>
+                        <h:inputFile id="carImage" class="form-control-file" value="#{carBean.carImage}" />
+                    </div>
+                    <h:commandButton value="Submit" action="#{carBean.add()}" class="btn btn-primary" />
+                </h:form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
